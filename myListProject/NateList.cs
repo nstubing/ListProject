@@ -8,33 +8,30 @@ namespace myListProject
 {
     public class NateList<T>
     {
-        T[] list;
-        int count;
-
-
-
+        public T[] list;
+        public int count;
         public NateList()
         {
-            list = new T[10];
+            list = new T[5];
             count = 0;
         }
 
         public T[] Add(T item)
         {
-            if (count>9)
+            if (count>4)
             {
                 NewArrayNeeded();
             }
             list[count] = item;
             count++;
-            return CurrentList();
+            return list;
         }
 
         public void NewArrayNeeded()
         {
-            if (count % 10 == 0)
+            if (count % 5 == 0)
             {
-                T[] newList = new T[count + 10];
+                T[] newList = new T[count + 5];
                 for (int i=0; i < count; i++ )
                 {
                     newList[i] = list[i];
@@ -42,15 +39,17 @@ namespace myListProject
                 list = newList;
             }
         }
-        public T[] CurrentList()
-        {
-            T[] currentList = new T[count];
-            for( int i =0; i<count;i++)
-            {
-                currentList[i] = list[i];
-            }
-            return currentList;
+        //public T[] CurrentList()
+        //{
+        //    T[] currentList = new T[count];
+        //    for( int i =0; i<count;i++)
+        //    {
+        //        currentList[i] = list[i];
+        //    }
+        //    return currentList;
 
-        }
+        //}
+
+
     }
 }
