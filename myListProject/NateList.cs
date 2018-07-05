@@ -39,17 +39,25 @@ namespace myListProject
                 list = newList;
             }
         }
-        //public T[] CurrentList()
-        //{
-        //    T[] currentList = new T[count];
-        //    for( int i =0; i<count;i++)
-        //    {
-        //        currentList[i] = list[i];
-        //    }
-        //    return currentList;
-
-        //}
-
-
+      
+        public T[] Remove(T item)
+        {
+            T[] currentArray = new T[list.Length];
+            int currentCount = count;
+            currentArray = list;
+            list = new T[5];
+            count = 0;
+            for(int i = 0; i<currentCount;i++)
+            {
+                if(currentArray[i].Equals(item))
+                {
+                }
+                else
+                {
+                    Add(currentArray[i]);
+                }
+            }
+            return list;
+        }
     }
 }
