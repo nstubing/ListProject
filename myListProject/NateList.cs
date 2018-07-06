@@ -10,6 +10,7 @@ namespace myListProject
     {
         public T[] list;
         public int count;
+        public T this [int i] { get => list[i]; set => list[i] = value; }
         public NateList()
         {
             list = new T[5];
@@ -58,6 +59,17 @@ namespace myListProject
                 }
             }
             return list;
+        }
+
+        public string ToString(T[] list)
+        {
+            string newString = "";
+            for(int i=0; i<count; i++)
+            {
+                newString += ""+list[i];
+            }
+            return newString;
+
         }
     }
 }
