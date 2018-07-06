@@ -5,7 +5,7 @@ using myListProject;
 namespace ListTests
 {
     [TestClass]
-    public class PlusTests
+    public class MinusTests
     {
         [TestMethod]
         public void oneStringListPlusAnother()
@@ -14,10 +14,10 @@ namespace ListTests
             myList1.Add("hello");
             myList1.Add("hey");
             NateList<string> myList2 = new NateList<string>();
-            myList2.Add("hello there");
+            myList2.Add("hello");
             myList2.Add("hey there");
 
-            string[] expected = { "hello", "hey", "hello there", "hey there" };
+            string[] expected = { "hello", "hey", "hey there" };
             string[] actual = myList1 + myList2;
 
         }
@@ -29,10 +29,10 @@ namespace ListTests
             myList1.Add(1);
             myList1.Add(2);
             NateList<int> myList2 = new NateList<int>();
-            myList2.Add(3);
+            myList2.Add(1);
             myList2.Add(4);
 
-            int[] expected = { 1, 2, 3, 4 };
+            int[] expected = { 1, 2, 4 };
             int[] actual = myList1 + myList2;
         }
     }

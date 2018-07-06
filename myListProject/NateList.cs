@@ -71,5 +71,54 @@ namespace myListProject
             return newString;
 
         }
+
+        public static T[] operator +(NateList<T> listOne, NateList<T> listTwo)
+        {
+            NateList<T> newList= new NateList<T>();
+            newList.list = listOne.list;
+            for(int i=0; i<listTwo.count;i++)
+            {
+                newList.Add(listTwo.list[i]);
+            }
+            return newList.list;
+        }
+        public static T[] operator -(NateList<T> listOne, NateList<T> listTwo)
+        {
+            NateList<T> newList = new NateList<T>();
+            newList.list = listOne.list;
+            bool isMatch;
+            for (int i = 0; i < listTwo.count; i++)
+            {
+                isMatch = false;
+                for (int j = 0; j < listOne.count; j++)
+                {
+                    if (newList[j].Equals(listTwo.list[i]) == true)
+                    {
+                        isMatch = true;
+                    }
+                }
+                if (isMatch==false)
+                {
+                    newList.Add(listTwo.list[i]);
+                }
+            }
+            return newList.list;
+        }
+
+        public T[] Zipper(NateList<T> listTwo)
+        {
+            T[] currentArray = new T[list.Length];
+            int currentCount = count;
+            currentArray = list;
+            list = new T[5];
+            count = 0;
+
+            for (int i = 0; i<currentCount; i++)
+            {
+                Add(currentArray[i]);
+                Add(listTwo.list[i]);            
+            }
+            return list;
+        }
     }
 }

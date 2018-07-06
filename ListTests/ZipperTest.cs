@@ -5,7 +5,7 @@ using myListProject;
 namespace ListTests
 {
     [TestClass]
-    public class PlusTests
+    public class ZipperTest
     {
         [TestMethod]
         public void oneStringListPlusAnother()
@@ -17,8 +17,8 @@ namespace ListTests
             myList2.Add("hello there");
             myList2.Add("hey there");
 
-            string[] expected = { "hello", "hey", "hello there", "hey there" };
-            string[] actual = myList1 + myList2;
+            string[] expected = { "hello",  "hello there", "hey", "hey there" };
+            string[] actual = myList1.Zipper(myList2);
 
         }
 
@@ -32,8 +32,8 @@ namespace ListTests
             myList2.Add(3);
             myList2.Add(4);
 
-            int[] expected = { 1, 2, 3, 4 };
-            int[] actual = myList1 + myList2;
+            int[] expected = { 1, 3, 2, 4 };
+            int[] actual = myList1.Zipper(myList2);
         }
     }
 }
