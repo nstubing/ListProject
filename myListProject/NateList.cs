@@ -11,7 +11,22 @@ namespace myListProject
     {
         public T[] list;
         public int count;
-        public T this [int i] { get => list[i]; set => list[i] = value; }
+        public T this [int i] //{ get => list[i]; set => list[i] = value; }
+        {
+            get
+            {
+                if (i <=count)
+                {
+                    return list[i];
+                }
+                else
+                {
+                    throw new IndexOutOfRangeException(); 
+                }
+            }
+            set {list[i] = value; }
+        }
+
         public NateList()
         {
             list = new T[5];
@@ -42,38 +57,35 @@ namespace myListProject
             }
         }
       
-        public T[] Remove(T item)
+        public NateList<T> Remove(T item)
         {
-            T[] currentArray = new T[list.Length];
-            int currentCount = count;
-            currentArray = list;
-            list = new T[5];
-            count = 0;
-            for(int i = 0; i<currentCount;i++)
+            NateList<T> currentArray = new NateList<T>();
+            for(int i = 0; i<count;i++)
             {
-                if(currentArray[i].Equals(item))
+                if(list[i].Equals(item)==false)
                 {
-                }
-                else
-                {
-                    Add(currentArray[i]);
+                    currentArray.Add(list[i]);
                 }
             }
-            return list;
+            this.list = currentArray.list;
+            this.count = currentArray.count;
+            return currentArray;
         }
 
-        public string ToString(NateList<T> myList)
+        public override string ToString()
         {
-            string newString = "";
-            for(int i=0; i<count; i++)
+            //stringbuilder
+            
+            StringBuilder sb = new StringBuilder();
+            for (int i=0; i < count; i++)
             {
-                newString += ""+myList[i];
+                sb.Insert(i, list[i]);
             }
-            return newString;
+            return sb.ToString();
 
         }
 
-        public static T[] operator +(NateList<T> listOne, NateList<T> listTwo)
+        public static NateList<T> operator +(NateList<T> listOne, NateList<T> listTwo)
         {
             NateList<T> newList= new NateList<T>();
             newList.list = listOne.list;
@@ -82,20 +94,20 @@ namespace myListProject
             {
                 newList.Add(listTwo.list[i]);
             }
-            return newList.list;
+            
+            return newList;
         }
-        public static T[] operator -(NateList<T> listOne, NateList<T> listTwo)
+        public static NateList<T> operator -(NateList<T> listOne, NateList<T> listTwo)
         {
             NateList<T> newList = new NateList<T>();
-            newList.list = listOne.list;
-            newList.count = listOne.count;
+            newList = listOne;
             bool isMatch;
             for (int i = 0; i < listTwo.count; i++)
             {
                 isMatch = false;
                 for (int j = 0; j < listOne.count; j++)
                 {
-                    if (newList[j].Equals(listTwo.list[i]) == true)
+                    if (listOne[j].Equals(listTwo.list[i]) == true)
                     {
                         isMatch = true;
                     }
@@ -105,38 +117,35 @@ namespace myListProject
                     newList.Add(listTwo.list[i]);
                 }
             }
-            return newList.list;
+            return newList;
         }
 
-        public T[] Zipper(NateList<T> listTwo)
+        public NateList<T> Zipper(NateList<T> listTwo)
         {
             NateList<T> currentArray = new NateList<T>();
-            currentArray.list = list;
-            currentArray.count = count;
-            list = new T[5];
-            count = 0;
-
-            for (int i = 0; i<currentArray.count && i<listTwo.count; i++)
+            
+            for (int i = 0; i<count && i<listTwo.count; i++)
             {
-                Add(currentArray[i]);
-                Add(listTwo.list[i]);            
+                currentArray.Add(list[i]);
+                currentArray.Add(listTwo[i]);            
             }
-            if (currentArray.count > listTwo.count)
+            if (count > listTwo.count)
             {
-                for (int j = currentArray.count; j<(currentArray.count - listTwo.count); j++)
+                for (int j = count; j<(count - listTwo.count); j++)
                 {
-                    Add(currentArray[j]);
+                    currentArray.Add(list[j]);
                 }
             }
-            else if (listTwo.count > currentArray.count)
+            else if (listTwo.count > count)
             {
-                for (int k = listTwo.count; k < (listTwo.count - currentArray.count); k++)
+                for (int k = listTwo.count; k < (listTwo.count - count); k++)
                 {
-                    Add(currentArray[k]);
+                    currentArray.Add(listTwo[k]);
                 }
             }
-
-            return list;
+            this.list = currentArray.list;
+            this.count = currentArray.count;
+            return currentArray;
         }
 
 

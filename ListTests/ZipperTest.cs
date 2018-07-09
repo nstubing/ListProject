@@ -18,7 +18,7 @@ namespace ListTests
             myList2.Add("hey there");
 
             string[] expected = { "hello",  "hello there", "hey", "hey there" };
-            string[] actual = myList1.Zipper(myList2);
+            NateList<string> actual = myList1.Zipper(myList2);
 
             Assert.AreEqual(expected[0], actual[0]);
             Assert.AreEqual(expected[1], actual[1]);
@@ -38,7 +38,7 @@ namespace ListTests
             myList2.Add(4);
 
             int[] expected = { 1, 3, 2, 4 };
-            int[] actual = myList1.Zipper(myList2);
+            NateList<int> actual = myList1.Zipper(myList2);
         }
         [TestMethod]
         public void AddUnevenStrings()
@@ -53,7 +53,7 @@ namespace ListTests
             myList2.Add(6);
 
             int[] expected = { 1, 3, 2, 4, 5, 6, };
-            int[] actual = myList1.Zipper(myList2);
+            NateList<int> actual = myList1.Zipper(myList2);
 
             Assert.AreEqual(expected[0], actual[0]);
             Assert.AreEqual(expected[1], actual[1]);
@@ -74,7 +74,7 @@ namespace ListTests
             myList1.Add(6);
 
             int[] expected = { 1, 3, 2, 4, 5, 6, };
-            int[] actual = myList2.Zipper(myList1);
+            NateList<int> actual = myList2.Zipper(myList1);
 
             Assert.AreEqual(expected[0], actual[0]);
             Assert.AreEqual(expected[1], actual[1]);
