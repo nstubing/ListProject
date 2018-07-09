@@ -19,7 +19,7 @@ namespace ListTests
 
             myList.Remove(2);
 
-            Assert.AreEqual(expected, myList.list[1]);
+            Assert.AreEqual(expected, myList[1]);
 
             
         }
@@ -38,7 +38,7 @@ namespace ListTests
             myList.Remove("that");
             myList.Remove("those");
 
-            Assert.AreEqual(expected, myList.list[1]);
+            Assert.AreEqual(expected, myList[1]);
         }
 
         [TestMethod]
@@ -51,7 +51,7 @@ namespace ListTests
             myList.Add("second");
             myList.Remove("first");
 
-            Assert.AreEqual(expected, myList.list[0]);
+            Assert.AreEqual(expected, myList[0]);
         }
     }
 }

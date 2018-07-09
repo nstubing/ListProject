@@ -18,8 +18,11 @@ namespace ListTests
             myList2.Add("hey there");
 
             string[] expected = { "hello", "hey", "hey there" };
-            string[] actual = myList1 + myList2;
+            string[] actual = myList1 - myList2;
 
+            Assert.AreEqual(expected[0], actual[0]);
+            Assert.AreEqual(expected[1], actual[1]);
+            Assert.AreEqual(expected[2], actual[2]);
         }
 
         [TestMethod]
@@ -33,7 +36,11 @@ namespace ListTests
             myList2.Add(4);
 
             int[] expected = { 1, 2, 4 };
-            int[] actual = myList1 + myList2;
+            int[] actual = myList1 - myList2;
+
+            Assert.AreEqual(expected[0], actual[0]);
+            Assert.AreEqual(expected[1], actual[1]);
+            Assert.AreEqual(expected[2], actual[2]);
         }
     }
 }

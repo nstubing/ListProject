@@ -65,44 +65,51 @@ namespace ListTests
             myList.Add(6);
 
             //Assert
-            Assert.AreEqual(expected[0], myList.list[0]);
-            Assert.AreEqual(expected[1], myList.list[1]);
-            Assert.AreEqual(expected[2], myList.list[2]);
-            Assert.AreEqual(expected[3], myList.list[3]);
-            Assert.AreEqual(expected[4], myList.list[4]);
-            Assert.AreEqual(expected[5], myList.list[5]);
+            Assert.AreEqual(expected[0], myList[0]);
+            Assert.AreEqual(expected[1], myList[1]);
+            Assert.AreEqual(expected[2], myList[2]);
+            Assert.AreEqual(expected[3], myList[3]);
+            Assert.AreEqual(expected[4], myList[4]);
+            Assert.AreEqual(expected[5], myList[5]);
         }
 
-        //[TestMethod]
-        //public void addTwoItemsToArray()
-        //{
-        //    //arrange
-        //    int[,] expected = { { 2, 4 }, { 3, 4 } };
-        //    //act
-        //    NateList<int[,]> myList = new NateList<int[,]>();
-        //    int[,] actual = myList.Add(expected);
-        //    //Assert
-        //    Assert.AreEqual(expected[0], actual[0]);
-        //    Assert.AreEqual(expected[1], actual[1]);
-        //}
-        //[TestMethod]
-        //public void TwoArrays_Add_OneArray()
-        //{
-        //    //arrange
-        //    string[] arrayOne = { "v", "x" };
-        //    string[] arrayTwo = { "q", "y" };
-        //    string[,] expected = { {"v", "x" }, { "q", "y" } };
-        //    //act
-        //    NateList<string[,]> myList = new NateList<string[,]>();
-        //    myList.Add(arrayOne);
-        //    myList.Add(arrayTwo);
-        //    //Assert
-        //    Assert.AreEqual(expected[0,0], actual[0,0]);
-        //    Assert.AreEqual(expected[0,1], actual[0,1]);
-        //    Assert.AreEqual(expected[1,0], actual[1,0]);
-        //    Assert.AreEqual(expected[1,1], actual[1,1]);
+        [TestMethod]
+        public void Add14Numbers()
+        {
+            NateList<int> myList = new NateList<int>();
+            myList.Add(1);
+            myList.Add(2);
+            myList.Add(3);
+            myList.Add(4);
+            myList.Add(5);
+            myList.Add(6);
+            myList.Add(7);
+            myList.Add(8);
+            myList.Add(9);
+            myList.Add(10);
+            myList.Add(11);
+            myList.Add(12);
+            myList.Add(13);
+            myList.Add(14);
+            int[] expected = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
 
-        //}
+            Assert.AreEqual(expected[0], myList[0]);
+            Assert.AreEqual(expected[1], myList[1]);
+            Assert.AreEqual(expected[2], myList[2]);
+            Assert.AreEqual(expected[3], myList[3]);
+            Assert.AreEqual(expected[4], myList[4]);
+            Assert.AreEqual(expected[5], myList[5]);
+            Assert.AreEqual(expected[6], myList[6]);
+            Assert.AreEqual(expected[7], myList[7]);
+            Assert.AreEqual(expected[8], myList[8]);
+            Assert.AreEqual(expected[9], myList[9]);
+            Assert.AreEqual(expected[10], myList[10]);
+            Assert.AreEqual(expected[11], myList[11]);
+            Assert.AreEqual(expected[12], myList[12]);
+            Assert.AreEqual(expected[13], myList[13]);
+
+
+        }
 
         [TestMethod]
         public void AddThirdItem()

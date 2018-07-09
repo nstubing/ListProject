@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace myListProject
 {
-    public class NateList<T>
+    public class NateList<T>: IEnumerable
     {
         public T[] list;
         public int count;
@@ -61,12 +62,12 @@ namespace myListProject
             return list;
         }
 
-        public string ToString(T[] list)
+        public string ToString(NateList<T> myList)
         {
             string newString = "";
             for(int i=0; i<count; i++)
             {
-                newString += ""+list[i];
+                newString += ""+myList[i];
             }
             return newString;
 
@@ -76,6 +77,7 @@ namespace myListProject
         {
             NateList<T> newList= new NateList<T>();
             newList.list = listOne.list;
+            newList.count = listOne.count;
             for(int i=0; i<listTwo.count;i++)
             {
                 newList.Add(listTwo.list[i]);
@@ -86,6 +88,7 @@ namespace myListProject
         {
             NateList<T> newList = new NateList<T>();
             newList.list = listOne.list;
+            newList.count = listOne.count;
             bool isMatch;
             for (int i = 0; i < listTwo.count; i++)
             {
@@ -107,18 +110,42 @@ namespace myListProject
 
         public T[] Zipper(NateList<T> listTwo)
         {
-            T[] currentArray = new T[list.Length];
-            int currentCount = count;
-            currentArray = list;
+            NateList<T> currentArray = new NateList<T>();
+            currentArray.list = list;
+            currentArray.count = count;
             list = new T[5];
             count = 0;
 
-            for (int i = 0; i<currentCount; i++)
+            for (int i = 0; i<currentArray.count && i<listTwo.count; i++)
             {
                 Add(currentArray[i]);
                 Add(listTwo.list[i]);            
             }
+            if (currentArray.count > listTwo.count)
+            {
+                for (int j = currentArray.count; j<(currentArray.count - listTwo.count); j++)
+                {
+                    Add(currentArray[j]);
+                }
+            }
+            else if (listTwo.count > currentArray.count)
+            {
+                for (int k = listTwo.count; k < (listTwo.count - currentArray.count); k++)
+                {
+                    Add(currentArray[k]);
+                }
+            }
+
             return list;
+        }
+
+
+        public IEnumerator GetEnumerator()
+        {
+            for (int i=0; i<count;i++)
+            {
+                yield return list[i];
+            }
         }
     }
 }

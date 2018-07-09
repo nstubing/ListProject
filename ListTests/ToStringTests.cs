@@ -16,7 +16,7 @@ namespace ListTests
             myList.Add(1);
             myList.Add(2);
             myList.Add(3);
-            string actual=myList.ToString(myList.list);
+            string actual=myList.ToString(myList);
 
             Assert.AreEqual(expected,actual);
 
@@ -30,7 +30,7 @@ namespace ListTests
             NateList<string> myList = new NateList<string>();
             myList.Add("this");
             myList.Add("that");
-            string actual = myList.ToString(myList.list);
+            string actual = myList.ToString(myList);
 
 
         }

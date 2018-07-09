@@ -10,11 +10,15 @@ namespace myListProject
     {
         static void Main(string[] args)
         {
-            NateList<int> myList = new NateList<int>();
-            myList.Add(1);
-            myList.Add(2);
-            myList.Add(3);
-            string actual = myList.ToString(myList.list);
+            NateList<int> myList1 = new NateList<int>();
+            myList1.Add(1);
+            myList1.Add(2);
+            NateList<int> myList2 = new NateList<int>();
+            myList2.Add(1);
+            myList2.Add(4);
+
+            int[] expected = { 1, 2, 4 };
+            int[] actual = myList1 - myList2;
         }
     }
 }

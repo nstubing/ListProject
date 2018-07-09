@@ -20,6 +20,10 @@ namespace ListTests
             string[] expected = { "hello", "hey", "hello there", "hey there" };
             string[] actual = myList1 + myList2;
 
+            Assert.AreEqual(expected[0], actual[0]);
+            Assert.AreEqual(expected[1], actual[1]);
+            Assert.AreEqual(expected[2], actual[2]);
+            Assert.AreEqual(expected[3], actual[3]);
         }
 
         [TestMethod]
@@ -34,6 +38,11 @@ namespace ListTests
 
             int[] expected = { 1, 2, 3, 4 };
             int[] actual = myList1 + myList2;
+
+            Assert.AreEqual(expected[0], actual[0]);
+            Assert.AreEqual(expected[1], actual[1]);
+            Assert.AreEqual(expected[2], actual[2]);
+            Assert.AreEqual(expected[3], actual[3]);
         }
     }
 }
