@@ -1,0 +1,6 @@
+I used override to make a new - operator that addes two lists together. If an item matches in the either of the lists only one instance of
+that object is going to be in the new list rather than two. The way the method works is by testing the second list objects against the first
+list objects.  If the second list object is the same as any of the first list objects it will not be added to the new list. if you were to 
+add two lists listOne = {1,2,3} and listTwo = {3,4,5} the new list will be returned as a new NateList equalling {1,2,3,4,5}. The - operator
+method takes in two instances of a nateList and returns a new instance of a NateList utilizing two for loops where the first one loops through 
+the second list and the second for loop checks to see if that item from the second list is the same as anything from the first list.
