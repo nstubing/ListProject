@@ -10,7 +10,8 @@ namespace myListProject
     public class NateList<T>: IEnumerable
     {
         public T[] list;
-        public int count;
+        private int count;
+        public int Count { get { return count; } }
         public T this [int i] //{ get => list[i]; set => list[i] = value; }
         {
             get
